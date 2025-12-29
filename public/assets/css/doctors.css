@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Inter,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.5;
+    padding: 1.5rem;
+}
+
+/* Headings */
+h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+h5, h6 {
+    margin-bottom: 0.75rem;
+    color: #2c3e50;
+}
+
+/* Container & Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 1.5rem;
+}
+
+.sidebar,
+.main-content {
+    background-color: white;
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Sidebar Styling */
+.sidebar hr {
+    margin: 0.75rem 0;
+    border: none;
+    height: 1px;
+    background-color: #eaeaea;
+}
+
+.text-info {
+    color: #3498db;
+    font-size: 0.95rem;
+    margin: 0.75rem 0 0.5rem;
+}
+
+.list-group {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+.list-group-item {
+    padding: 0.5rem 0;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+}
+
+.form-check-input {
+    margin: 0;
+}
+
+.form-check-label {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* Main Content */
+.main-content hr {
+    margin: 0.75rem 0 1.25rem;
+    border: none;
+    height: 1px;
+    background-color: #eaeaea;
+}
+
+#loader {
+    color: #7f8c8d;
+    font-style: italic;
+    margin: 1rem 0;
+}
+
+/* Doctor Cards Grid - FIXED LAYOUT */
+.cards-grid {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 1.25rem;
+}
+
+.card-item {
+    width: 100%;
+}
+
+.card {
+    border: 1px solid #e0e0e0;
+    border-radius: 0.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-top {
+    font-weight: 600;
+    padding: 0.75rem;
+    text-align: center;
+    border-bottom: 1px solid #bbdefb;
+    margin: 0;
+}
+.online {
+    background-color: #154D71;
+    color: white;
+}
+.offline {
+    background-color: #F4F4F4;
+}
+
+.card-body {
+    padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    color: black;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+}
+
+.icon-text {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.card-body p {
+    font-size: 0.95rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.btn {
+    margin-top: auto;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.btn:hover {
+    background-color: #2980b9;
+}
+.btn-primary {
+    background-color: #3498db;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 1rem;
+    }
+
+    .grid-container {
+        gap: 1rem;
+    }
+
+    .sidebar,
+    .main-content {
+        padding: 1rem;
+    }
+}

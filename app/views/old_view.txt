@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctors</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="<?php echo ROOT ?>/assets/css/doctors.css">
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- ================= LEFT FILTER PANEL ================= -->
+    <aside class="filters">
+
+        <h3>Keywords</h3>
+
+        <div class="tags">
+            <span class="tag">Allergy ✕</span>
+            <span class="tag">Cold ✕</span>
+            <span class="tag">Acidity ✕</span>
+        </div>
+
+        <div class="filter-group">
+            <label>
+                <input type="checkbox" checked>
+                Available
+            </label>
+            <small>recently available</small>
+        </div>
+
+        <div class="filter-group">
+            <label>
+                <input type="checkbox" checked>
+                Popularity
+            </label>
+            <small>Description</small>
+        </div>
+
+        <h4>Fees</h4>
+        <div class="fee-range">
+            <span>$0</span>
+            <input type="range" id="minFee" min="0" max="1000">
+            <span>$100</span>
+        </div>
+
+        <h4>Sensory Disabilities</h4>
+        <label><input type="checkbox" checked> Deaf</label><br>
+        <label><input type="checkbox" checked> Mute</label>
+
+    </aside>
+
+    <!-- ================= RIGHT CONTENT ================= -->
+    <main class="content">
+
+        <!-- ======= SEARCH + SORT BAR ======= -->
+        <div class="top-bar">
+
+            <input
+                    type="text"
+                    class="search"
+                    placeholder="Search by Name or ID"
+            >
+
+            <div class="sort-buttons">
+                <button data-sort="new" class="active">New</button>
+                <button data-sort="price_asc">Price ascending</button>
+                <button data-sort="price_desc">Price descending</button>
+                <button data-sort="rating">Rating</button>
+
+            </div>
+        </div>
+
+        <!-- ======= DOCTOR LIST ======= -->
+        <div class="doctor-list">
+
+            <?php if (!empty($doctors)): ?>
+                <?php foreach ($doctors as $doctor): ?>
+
+                    <div class="doctor-card">
+
+                        <div class="doctor-info">
+                            <h3><?= htmlspecialchars($doctor->name) ?></h3>
+
+                            <p class="spec">
+                                <?= htmlspecialchars($doctor->specialization ?? 'General Physician') ?>
+                            </p>
+
+                            <p>💳 Fee: <?= number_format($doctor->fee, 2) ?> taka</p>
+
+                            <p>
+                                ⏰ Available:
+                                <?= date('h:i A', strtotime($doctor->available_from)) ?>
+                                –
+                                <?= date('h:i A', strtotime($doctor->available_to)) ?>
+                            </p>
+
+                            <p>⭐ Rating: <?= number_format($doctor->rating, 1) ?>/5</p>
+
+                            <p>📞 <?= htmlspecialchars($doctor->phone) ?></p>
+                        </div>
+
+                        <div class="doctor-action">
+                            <button>→ Consult Now</button>
+                        </div>
+
+                    </div>
+
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>No doctors available.</p>
+            <?php endif; ?>
+
+        </div>
+    </main>
+
+</div>
+</body>
+</html>
