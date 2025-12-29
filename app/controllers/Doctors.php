@@ -1,11 +1,21 @@
 <?php
 
-class Doctors extends Controller
+class Doctors
 {
-    public function index($a = null, $b = null, $c = null)
+    use Controller;
+    public function index()
     {
-        // Load the doctors view
-        $this->view('doctors');
+        $doctor = new Doctor;
+        
+        $specialties = $doctor->distinct('d_specialty');
+        $genders = $doctor->distinct('d_gender');
+        $all_doctors = $doctor->find_all();
+//        show($all_doctors);
+        $this->view('doctors', [
+            'all_doctors' => $all_doctors,
+            'specialties' => $specialties,
+            'genders' => $genders
+        ]);
     }
-
 }
+

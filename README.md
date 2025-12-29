@@ -49,3 +49,6 @@ Telemedicine++ is web-based project that integrates both frontend and backend. F
   - Generate monthly summary report (total doctors, patients, medicines, lab tests)
   - Ban/Unban doctors, patients for unauthorized behavior
   - Publish announcement across all user (Doctors, patients)
+
+### Coding Standards
+- Follow snake_case for function naming conventions.
