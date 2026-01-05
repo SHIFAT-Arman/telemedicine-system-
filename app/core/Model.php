@@ -19,8 +19,14 @@ trait Model
     public function find_all()
     {
         $query = "SELECT * FROM $this->table ORDER BY $this->order_column $this->order_type limit $this->limit offset $this->offset";
-        
+//        var_dump($query);
         return $this->query($query);
+    }
+    public function get_paginated($limit, $offset)
+    {
+        $this->limit = $limit;
+        $this->offset = $offset;
+        return $this->find_all();
     }
     public function where($data, $data_not = [])
     {
@@ -39,7 +45,7 @@ trait Model
         }
         $query = trim($query, " && ");
         $query .= " ORDER BY $this->order_column $this->order_type limit $this->limit offset $this->offset";
-//        echo $query;
+        echo $query;
         $data = array_merge($data, $data_not);
 
         return $this->query($query, $data);

@@ -44,6 +44,13 @@ h5, h6 {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
+.pagination {
+    display: flex;
+    justify-content: end;
+    margin-top: 1.5rem;
+    gap: 0.5rem;
+}
+
 /* Sidebar Styling */
 .sidebar hr {
     margin: 0.75rem 0;
