@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="<?php echo ROOT ?>/assets/css/signup.css">
 </head>
 <body>
-<div class="container">
         <header class="signup-header">
             <div class="logo">
                 <a href="<?php echo ROOT ?>/home"><img src="<?php echo ROOT ?>/assets/images//logos/T-shaped.png"
@@ -14,6 +13,7 @@
                 <div class="tele-name">Telemedicine++</div>
             </div>
         </header>
+<div class="container">
     <div class="signup-box">
         <div class="button-group">
             <h2>Create an account as a</h2>

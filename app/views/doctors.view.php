@@ -53,7 +53,8 @@
             </ul>
         </div>
         <div class="main-content">
-            <h5 class="text-center" id="textChange">All Doctors</h5>
+<!--            <h5 class="text-center" id="textChange">All Doctors</h5>-->
+            
             <hr>
             <div class="text-center">
                 <p style="display: none;" id="loader">Loading...</p>
@@ -128,8 +129,33 @@
                         </div>
                     </div>
                     <?php endforeach; ?>
+                    <!--                            pagination button-->
+                    <div class="pagination">
+                        <?php if (!isset($_GET['page'])) {
+                            $_GET['page'] = 1;
+                        } ?>
+                        <?php if ($_GET['page'] > 1){ ?>
+                            <a href="<?= ROOT ?>/doctors?page=<?= $_GET['page'] - 1 ?>" class="btn btn-secondary">
+                                Previous
+                            </a>
+                        <?php } ?>
+
+                        <?php if ($_GET['page'] < 10) { ?>
+                            <a href="<?= ROOT ?>/doctors?page=<?= $_GET['page'] + 1 ?>" class="btn btn-secondary">
+                                Next
+                            </a>
+                        <?php } ?>
+
+                    </div>
                     <?php } else { ?>
                         No Doctors Found
+                        <div class="pagination" >
+                            <?php if ($_GET['page'] > 1){ ?>
+                                <a href="<?= ROOT ?>/doctors?page=<?= $_GET['page'] - 1 ?>" class="btn btn-secondary">
+                                    Previous
+                                </a>
+                            <?php } ?>
+                        </div>
                     <?php } ?>
                 </div>
             </div>
