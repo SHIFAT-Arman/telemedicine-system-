@@ -36,8 +36,8 @@
                    
                     <?php foreach ($data['appointments'] as $appointment): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($appointment['p_id']); ?></td>
-                            <td><?php echo htmlspecialchars($appointment['d_id']); ?></td>
+                            <td><?php echo htmlspecialchars($appointment['p_nid_no']); ?></td>
+                            <td><?php echo htmlspecialchars($appointment['d_reg_no']); ?></td>
                             <td><?php echo htmlspecialchars($appointment['appointment_date']); ?></td>
                             <td><?php echo htmlspecialchars($appointment['appointment_time']); ?></td>
                             <td><?php echo htmlspecialchars($appointment['creation_date']); ?></td>

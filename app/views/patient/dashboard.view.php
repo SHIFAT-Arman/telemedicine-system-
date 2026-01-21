@@ -21,6 +21,12 @@
             </div>
         </div>
         <div class="content">
+<!--            --><?php //show($data)?>
+            <?php if (isset($data['announcements'])) {?>
+                <div class="marquee">
+                    <span><?php echo htmlspecialchars($data['announcements'])?></span>
+                </div>
+            <?php } ?>
             <div class="dashboard-cards">
 
                 <!-- Appointments Card -->

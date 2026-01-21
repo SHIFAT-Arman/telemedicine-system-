@@ -234,12 +234,12 @@ function validate_core_patient($data)
     }
     // validate sensory disability
     $is_sensory_disabled = trim($data['is_sensory_disabled'] ?? '');
-    if (empty($is_sensory_disabled)) {
+    if (!isset($is_sensory_disabled)) {
         $errors['is_sensory_disabled'] = "Information is required.";
     }
      // validate blood group other than select
     $p_blood_group = trim($data['p_blood_group'] ?? '');
-    if (empty($ip_blood_group) || $p_blood_group == 'select') {
+    if (empty($p_blood_group) || $p_blood_group == 'select') {
         $errors['p_blood_group'] = "Blood Group is required.";
     }
     // validate email

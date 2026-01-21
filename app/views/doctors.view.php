@@ -79,12 +79,9 @@
                             <div class="card-body">
 
                                 <h4 class="card-title">
-
-                                    <?php echo htmlspecialchars($doctor['d_first_name'] . " " . $doctor['d_last_name']); ?>
-
+                                    <?php echo htmlspecialchars($doctor['d_title'] . " " . $doctor['d_first_name'] . " " . $doctor['d_last_name']); ?>
                                 </h4>
-                                <p><?php echo htmlspecialchars($doctor['d_title']); ?></p>
-                                <br>
+<!--                                <p>--><?php //echo htmlspecialchars($doctor['d_title']); ?><!--</p>-->
                                 <p>
                                     <?php if ($doctor['d_gender'] == "Female") { ?>
                                 <div class="icon-text">
