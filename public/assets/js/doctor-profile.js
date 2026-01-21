@@ -22,7 +22,8 @@ document.getElementById("d_Form").addEventListener("submit", function (e) {
             }
             if (data.status === "success") {
                 // console.log(ROOT + "/admin/manage_doctors");
-                window.location.href = ROOT + "/DoctorProfile/dashboard";
+                console.log(data);
+                // window.location.href = ROOT + "/DoctorPortal/dashboard";
             }
         })
         .catch(error => console.error('Error:', error));
