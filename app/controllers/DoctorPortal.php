@@ -21,17 +21,28 @@ class DoctorPortal
         $doctor = new Doctor();
         $doctor_data = $doctor->first(['d_email' => $user->email]);
 //        var_dump($doctor_data);
-
-        $appointment = new Appointment;
-        $appointments = $appointment->where(['d_id' => $doctor_data['id']]);
-//        show($appointments);
-        $patients_with_appointments = $appointment->getPatientsByDoctor($appointments['d_id']);
         $announcement = new Announcement();
         $announcements = $announcement->find_all(1);
+        $appointment = new Appointment;
+        $appointments = $appointment->where(['d_reg_no' => $doctor_data['d_reg_no']]);
+        $data = [];
+        if (!$appointments){
+            $data = [
+                'd_avail_status' => $doctor_data['d_avail_status'] ?? null,
+                'announcements' => $announcements[0]['text'] ?? null
+            ];
+            $this->view('doctor/dashboard', $data);
+            die;
+        }
+//        show($appointments);
+        $patients_with_appointments = $appointment->getPatientsByDoctor($appointments['d_reg_no']);
+//        show($patients_with_appointments);
+        $countAppointments = count($patients_with_appointments);
+        
         $data = [
-            'appointments_count' => count($patients_with_appointments),
-            'd_avail_status' => $doctor_data['d_avail_status'],
-            'announcements' => $announcements[0]['text']
+            'appointments_count' => $countAppointments,
+            'd_avail_status' => $doctor_data['d_avail_status'] ?? null,
+            'announcements' => $announcements[0]['text'] ?? null
         ];
 //        show($data);
         $this->view('doctor/dashboard', $data);
@@ -50,9 +61,14 @@ class DoctorPortal
 //        var_dump($doctor_data);
 
         $appointment = new Appointment;
-        $appointments = $appointment->where(['d_id' => $doctor_data['id']]);
+        $appointments = $appointment->where(['d_reg_no' => $doctor_data['d_reg_no']]);
 //        show($appointments);
-        $patients_with_appointments = $appointment->getPatientsByDoctor($appointments['d_id']);
+        $data = [];
+        if (!$appointments){
+            $this->view('doctor/manage_appointments', $data);
+            die;
+        }
+        $patients_with_appointments = $appointment->getPatientsByDoctor($appointments['d_reg_no']);
 //        var_dump($patients_with_appointments);
 //        show($patients_with_appointments);
         $data = [
@@ -118,18 +134,20 @@ class DoctorPortal
                     'status' => 'error',
                     'errors' => $errors
                 ]);
-//                var_dump($errors);
                 exit;
             }
             echo json_encode([
                 'status' => 'success',
                 'message' => 'Form submitted successfully'
             ]);
-            $doctor->update(['d_reg_no' => $doctor_data['d_reg_no']], $updatedData, 'd_reg_no');
+//            show($updatedData);
+            $d_reg_no = $_POST['d_reg_no'];
+            $doctor->update($d_reg_no, $updatedData, 'd_reg_no');
             exit;
         }
         $this->view('doctor/profile', $data = [
-            'data' => $doctor_data
+            'data' => $doctor_data,
+            'errors' => $errors
         ]);
     }
 

@@ -32,6 +32,7 @@
                         <th>Date</th>
                         <th>Time</th>
                         <th>Availability Status</th>
+                        <th>Action</th>
                     </tr>
                     <?php foreach ($data['doctor_data'] as $pData): ?>
                         <tr>
@@ -41,6 +42,11 @@
                             <td><?php echo htmlspecialchars($pData['appointment_date']); ?></td>
                             <td><?php echo htmlspecialchars($pData['appointment_time']); ?></td>
                             <td><?php echo htmlspecialchars($pData['d_avail_status']); ?></td>
+                            <td>
+                                <a href="<?php echo ROOT ?>/patientPortal/view_report?d_reg_no=<?php echo $pData['d_reg_no']; ?>"">
+                                    <button class="btn btn-update">View Report</button>
+                                </a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </table>

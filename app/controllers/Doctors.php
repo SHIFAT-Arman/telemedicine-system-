@@ -22,14 +22,14 @@ class Doctors
                 }
                 $appointment = new Appointment();
                 $data = [
-                    'p_id' => $_SESSION['id'],
-                    'd_id' => $doctor_data['id'],
+                    'p_nid_no' => $_SESSION['p_nid_no'],
+                    'd_reg_no' => $doctor_data['d_reg_no'],
                     'appointment_date' => $_POST['appointment_date'],
                     'appointment_time' => $_POST['appointment_time'],
                     'creation_date' => date('Y-m-d H:i:s')
                 ];
                 $appointment->insert($data);
-                var_dump($_SESSION);
+//                var_dump($_SESSION);
                 if ($_SESSION['role'] === 'patient') {
                     redirect_by_role('patient');
                 } elseif ($_SESSION['role'] === 'admin') {

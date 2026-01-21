@@ -73,11 +73,11 @@
                         <div class="sensory-options">
                             <span class="sensory-label">Sensory Disabilities?</span>
                             <div class="radio-group">
-                                <input type="radio" id="yes" name="is_sensory_disabled" value="Yes" <?php if (isset($data['is_sensory_disabled']) && $data['is_sensory_disabled'] === 'Yes') echo ' checked'; ;?>>
+                                <input type="radio" id="yes" name="is_sensory_disabled" value="1" <?php if (isset($data['is_sensory_disabled']) && $data['is_sensory_disabled'] === 1) echo ' checked'; ;?>>
                                 <label for="yes">Yes</label>
                             </div>
                             <div class="radio-group">
-                                <input type="radio" id="no" name="is_sensory_disabled" value="No" <?php if (isset($data['is_sensory_disabled']) && $data['is_sensory_disabled'] === 'No') echo ' checked'; ;?>>
+                                <input type="radio" id="no" name="is_sensory_disabled" value="0" <?php if (isset($data['is_sensory_disabled']) && $data['is_sensory_disabled'] === 0) echo ' checked'; ;?>>
                                 <label for="no">No</label>
                             </div>
                         </div>
@@ -154,7 +154,9 @@
                 </form>
             </div>
         </div>
-
+        <script>
+            var ROOT = "<?php echo ROOT ?>";
+        </script>
         <script src="<?php echo ROOT ?>/assets/js/patient-profile.js"></script>
 
 </body>

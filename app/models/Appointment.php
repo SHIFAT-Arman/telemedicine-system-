@@ -17,16 +17,18 @@ class Appointment
     // specify which columns are allowed to be inserted or updated
 
 
-    public function getPatientsByDoctor($d_id)
+    public function getPatientsByDoctor($d_reg_no)
     {
-        $query = "SELECT p.*, a.appointment_date, a.appointment_time FROM appointments a JOIN patients p ON a.p_id = p.id WHERE a.d_id = ? ORDER BY a.appointment_date DESC";
+        $query = "SELECT p.*, a.appointment_date, a.appointment_time FROM appointments a JOIN patients p ON a.p_nid_no = p.p_nid_no WHERE a.d_reg_no = ? ORDER BY a.appointment_date DESC";
 
         $conn = $this->connect();
         $stmt = $conn->prepare($query);
-
+        if (!$stmt){
+            return [];
+        }
         if ($stmt) {
             // bind parameter
-            $stmt->bind_param("i", $d_id);
+            $stmt->bind_param("i", $d_reg_no);
 
             // execute
             $stmt->execute();
@@ -42,22 +44,19 @@ class Appointment
             // cleanup
             $stmt->close();
             $conn->close();
-
             return $data;
         }
-
-        return false;
     }
-    public function getDoctorsByPatient($p_id)
+    public function getDoctorsByPatient($p_nid_no)
     {
-        $query = "SELECT d.*, a.appointment_date, a.appointment_time FROM appointments a JOIN doctors d ON a.d_id = d.id WHERE a.p_id = ? ORDER BY a.appointment_date DESC";
+        $query = "SELECT d.*, a.appointment_date, a.appointment_time FROM appointments a JOIN doctors d ON a.d_reg_no = d.d_reg_no WHERE a.p_nid_no = ? ORDER BY a.appointment_date DESC";
 
         $conn = $this->connect();
         $stmt = $conn->prepare($query);
 
         if ($stmt) {
             // bind parameter
-            $stmt->bind_param("i", $p_id);
+            $stmt->bind_param("i", $p_nid_no);
 
             // execute
             $stmt->execute();
