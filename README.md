@@ -2,6 +2,11 @@
 ### A Web Application for Remote Healthcare Management
 
 ----
+[![HTML](https://img.shields.io/badge/HTML-%23E34F26.svg?logo=html5&logoColor=white)](#) [![CSS](https://img.shields.io/badge/CSS-639?logo=css&logoColor=fff)](#) [![PHP](https://img.shields.io/badge/php-%23777BB4.svg?&logo=php&logoColor=white)](#) [![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=fff)](#) [![PhpStorm](https://img.shields.io/badge/PhpStorm-b5179e?logo=phpstorm&logoColor=fff)](#) ![XAMPP](https://img.shields.io/badge/XAMPP-FB7A24?style=flat&logo=xampp&logoColor=white)
+
+
+
+----
 ## Table of Contents
 
 1. [Description](#description)
